@@ -1,0 +1,20 @@
+body{
+    background-color: gainsboro;
+}
+
+#title {
+    text-align: center;
+    font-size: x-large;
+    align: center;
+}
+
+
+textarea {
+    margin: 10px;
+    width: 95%;
+    height: 40%;
+}
+
+li[min] {
+    color: RED;
+}

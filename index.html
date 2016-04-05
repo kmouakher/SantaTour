@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SantaTour</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="scripts.js" ></script>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<span id='title'>Santa Tour</span>
+<div id="container">
+
+    <span>
+        Every year, Santa manages to deliver all of his presents in a single night.
+        This year, however, he has some new locations to visit; his elves have provided him the distances between every pair of locations. He can start and end at any two (different) locations he wants, but he must visit each location exactly once. What is the shortest distance he can travel to achieve this?
+    </span>
+
+    <div class='input' >
+        <form>
+            <textarea name='distances'  required rows="30">
+London to Dublin = 464
+London to Belfast = 518
+Dublin to Belfast = 141</textarea>
+        </form>
+
+        <button id='process'>Process</button>
+    </div>
+
+    <span id="results"></span>
+
+    <script>
+        $("#process").click(function() {
+            var pathsArray = calculateShortestPaths(parseDatas($("[name=distances]").val()));
+            min = Math.min.apply(null, $.map(pathsArray, function(path){ return path[path.length-1]; }));
+
+            var htmlResult = "<br><b>The shortest distance is: " + min + "</b><ul>";
+            $.each( pathsArray, function(index, path){
+                htmlResult += (path[path.length-1]==min) ? "<li min>" : "<li>" ;
+                htmlResult += JSON.stringify(path) + "</li>";
+            });
+            htmlResult += "</ul>";
+            $("#results").html(htmlResult);
+        });
+    </script>
+</div>
+</body>
+</html>
