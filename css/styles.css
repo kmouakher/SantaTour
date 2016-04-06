@@ -1,4 +1,5 @@
 body{
+    margin: 10px;
     background-color: gainsboro;
 }
 
@@ -15,6 +16,9 @@ textarea {
     height: 40%;
 }
 
+#process {
+    margin: 10px;
+}
 li[min] {
     color: RED;
 }
